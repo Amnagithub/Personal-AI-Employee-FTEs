@@ -1,0 +1,14 @@
+# AI Employee Vault - Python Dependencies
+# Install with: pip install -r requirements.txt
+# Or with uv: uv pip install -r requirements.txt
+
+# File system watcher (for filesystem_watcher.py)
+watchdog>=4.0.0
+
+# Optional: For Gmail watcher (if implementing later)
+# google-api-python-client>=2.0.0
+# google-auth-httplib2>=0.2.0
+# google-auth-oauthlib>=1.0.0
+
+# Optional: For WhatsApp watcher (if implementing later)
+# playwright>=1.40.0
