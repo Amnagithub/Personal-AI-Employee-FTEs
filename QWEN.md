@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains a comprehensive architectural blueprint and hackathon guide for building a **"Digital FTE" (Full-Time Equivalent)** — an autonomous AI agent that proactively manages personal and business affairs 24/7. The project leverages **Claude Code** as the reasoning engine and **Obsidian** as the local-first dashboard/memory system.
+This repository contains a comprehensive architectural blueprint and hackathon guide for building a **"Digital FTE" (Full-Time Equivalent)** — an autonomous AI agent that proactively manages personal and business affairs 24/7. The project leverages **Qwen Code** as the reasoning engine and **Obsidian** as the local-first dashboard/memory system.
 
 **Tagline:** *Your life and business on autopilot. Local-first, agent-driven, human-in-the-loop.*
 
@@ -10,7 +10,7 @@ This repository contains a comprehensive architectural blueprint and hackathon g
 
 | Layer | Component | Purpose |
 |-------|-----------|---------|
-| **Brain** | Claude Code | Reasoning engine for multi-step task completion |
+| **Brain** | Qwen Code | Reasoning engine for multi-step task completion |
 | **Memory/GUI** | Obsidian (Markdown) | Local knowledge base, dashboard, and state management |
 | **Senses (Watchers)** | Python scripts | Monitor Gmail, WhatsApp, filesystems to trigger AI actions |
 | **Hands (MCP)** | Model Context Protocol servers | External actions (email, browser automation, payments) |
@@ -48,7 +48,7 @@ Personal AI Employee FTEs/
 
 | Component | Version | Purpose |
 |-----------|---------|---------|
-| [Claude Code](https://claude.com/product/claude-code) | Active subscription | Primary reasoning engine |
+| [Qwen Code](https://github.com/anthropics/claude-code) | Active subscription | Primary reasoning engine |
 | [Obsidian](https://obsidian.md/download) | v1.10.6+ | Knowledge base & dashboard |
 | [Python](https://www.python.org/downloads/) | 3.13+ | Watcher scripts & orchestration |
 | [Node.js](https://nodejs.org/) | v24+ LTS | MCP servers & automation |
@@ -144,7 +144,7 @@ status: pending
 
 ### Human-in-the-Loop Pattern
 
-For sensitive actions (payments, sending emails), Claude writes an approval request:
+For sensitive actions (payments, sending emails), Qwen writes an approval request:
 
 ```markdown
 ---
@@ -164,7 +164,7 @@ Move this file to /Rejected folder.
 
 ### Ralph Wiggum Loop (Persistence)
 
-Use the Stop hook pattern to keep Claude working until task completion:
+Use the Stop hook pattern to keep Qwen working until task completion:
 
 ```bash
 # Start a Ralph loop
@@ -186,7 +186,7 @@ Use the Stop hook pattern to keep Claude working until task completion:
 
 | Tier | Time | Deliverables |
 |------|------|--------------|
-| **Bronze** | 8-12 hours | Obsidian vault, one watcher, basic Claude integration |
+| **Bronze** | 8-12 hours | Obsidian vault, one watcher, basic Qwen integration |
 | **Silver** | 20-30 hours | Multiple watchers, MCP server, HITL workflow, scheduling |
 | **Gold** | 40+ hours | Full integration, Odoo accounting, Ralph Wiggum loop, audit logging |
 | **Platinum** | 60+ hours | Cloud deployment, work-zone specialization, A2A upgrade |

@@ -9,8 +9,8 @@ and updates the Dashboard.md with current status.
 Usage:
     python orchestrator.py /path/to/vault
 
-Or with Claude Code integration:
-    claude "Run the orchestrator to process pending actions"
+Or with Qwen Code integration:
+    qwen "Run the orchestrator to process pending actions"
 """
 
 import sys

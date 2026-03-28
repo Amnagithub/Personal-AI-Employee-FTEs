@@ -5,6 +5,55 @@
       "source": "bilalmk/todo_correct",
       "sourceType": "github",
       "computedHash": "f73daf75e38650c202e61f652a26578db157f8423e8bcf283bcd93b441641461"
+    },
+    "email-mcp": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "silver_tier_2026",
+      "description": "Email integration via Gmail MCP. Send, draft, search, and manage emails.",
+      "tier": "silver"
+    },
+    "gmail-watcher": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "silver_tier_2026",
+      "description": "Monitor Gmail for new important emails and create action files.",
+      "tier": "silver"
+    },
+    "whatsapp-watcher": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "silver_tier_2026",
+      "description": "Monitor WhatsApp Web for messages with keywords like urgent, invoice, payment.",
+      "tier": "silver"
+    },
+    "linkedin-poster": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "silver_tier_2026",
+      "description": "Automatically post updates to LinkedIn for business promotion.",
+      "tier": "silver"
+    },
+    "planner": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "silver_tier_2026",
+      "description": "Create Plan.md files for multi-step tasks with Qwen Code reasoning.",
+      "tier": "silver"
+    },
+    "approval-workflow": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "silver_tier_2026",
+      "description": "Human-in-the-Loop (HITL) approval workflow for sensitive actions.",
+      "tier": "silver"
+    },
+    "scheduler": {
+      "source": "local",
+      "sourceType": "local",
+      "computedHash": "silver_tier_2026",
+      "description": "Schedule recurring tasks via cron or Task Scheduler.",
+      "tier": "silver"
     }
   }
 }

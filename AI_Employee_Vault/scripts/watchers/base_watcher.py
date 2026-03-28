@@ -4,7 +4,7 @@
 Base Watcher - Abstract base class for all AI Employee watchers.
 
 Watchers are lightweight Python scripts that run continuously in the background,
-monitoring various inputs and creating actionable files for Claude to process.
+monitoring various inputs and creating actionable files for Qwen to process.
 """
 
 import time

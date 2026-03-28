@@ -1,14 +1,48 @@
 # AI Employee Vault - Python Dependencies
+# Silver Tier - Gmail Watcher + LinkedIn Poster
 # Install with: pip install -r requirements.txt
 # Or with uv: uv pip install -r requirements.txt
+
+# =============================================================================
+# CORE DEPENDENCIES (Required for all tiers)
+# =============================================================================
 
 # File system watcher (for filesystem_watcher.py)
 watchdog>=4.0.0
 
-# Optional: For Gmail watcher (if implementing later)
-# google-api-python-client>=2.0.0
-# google-auth-httplib2>=0.2.0
-# google-auth-oauthlib>=1.0.0
+# =============================================================================
+# GMAIL WATCHER DEPENDENCIES
+# =============================================================================
 
-# Optional: For WhatsApp watcher (if implementing later)
-# playwright>=1.40.0
+# Google API client
+google-api-python-client>=2.118.0
+
+# Google authentication
+google-auth>=2.27.0
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=1.2.0
+
+# =============================================================================
+# LINKEDIN POSTER DEPENDENCIES (Playwright)
+# =============================================================================
+
+# Browser automation
+playwright>=1.40.0
+
+# After installing, run: playwright install chromium
+
+# =============================================================================
+# OPTIONAL DEPENDENCIES
+# =============================================================================
+
+# For WhatsApp watcher (future)
+# playwright (already included above)
+
+# For Odoo integration (Gold tier)
+# requests>=2.31.0
+
+# For scheduling (alternative to cron)
+# schedule>=1.2.0
+
+# For logging and monitoring
+# python-json-logger>=2.0.0
