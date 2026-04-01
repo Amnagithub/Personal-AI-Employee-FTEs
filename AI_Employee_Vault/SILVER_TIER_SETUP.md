@@ -250,8 +250,8 @@ Move-Item Pending_Approval/LINKEDIN_POST_*.md Approved/
 
 ```bash
 # Publish all approved posts
-python3 scripts/linkedin_poster.py publish --vault .
-```
+python3 scrpts/linkedin_poster.py publish --vault .
+```i
 
 ### What Happens:
 
