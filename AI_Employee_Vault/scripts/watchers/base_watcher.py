@@ -95,27 +95,35 @@ class BaseWatcher(ABC):
     def run(self):
         """
         Main run loop - continuously monitors and creates action files.
-        
+
         This method runs indefinitely until interrupted (Ctrl+C).
         """
         self.logger.info(f'Starting {self.__class__.__name__}')
         self.logger.info(f'Vault path: {self.vault_path}')
         self.logger.info(f'Check interval: {self.check_interval}s')
-        
+
+        check_count = 0
         try:
             while True:
                 try:
+                    check_count += 1
                     items = self.check_for_updates()
+                    processed_count = 0
                     for item in items:
                         item_id = item.get('id', str(item))
                         if item_id not in self.processed_ids:
                             filepath = self.create_action_file(item)
                             self.processed_ids.add(item_id)
                             self.logger.info(f'Created action file: {filepath.name}')
+                            processed_count += 1
                             self._save_processed_cache()
+                    
+                    if check_count % 5 == 0:  # Log heartbeat every 5 checks
+                        self.logger.info(f'Heartbeat: Check #{check_count}, {processed_count} new items, {len(self.processed_ids)} total processed')
                 except Exception as e:
                     self.logger.error(f'Error processing items: {e}')
-                
+
+                self.logger.debug(f'Sleeping for {self.check_interval}s until next check...')
                 time.sleep(self.check_interval)
         except KeyboardInterrupt:
             self.logger.info(f'{self.__class__.__name__} stopped by user')

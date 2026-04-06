@@ -106,25 +106,48 @@ python3 AI_Employee_Vault/scripts/watchers/whatsapp_watcher.py . --interval 30
 
 ### 4. LinkedIn Poster (`linkedin-poster`)
 
-**Purpose:** Auto-post business updates to LinkedIn
+**Purpose:** Autonomous LinkedIn posting for business promotion
 
 **Location:** `.qwen/skills/linkedin-poster/`
 
-**Workflow:**
-1. Qwen creates draft → `Pending_Approval/LINKEDIN_post_*.md`
-2. Human reviews content
-3. Move to `Approved/` to publish
-4. Orchestrator posts via Playwright
+**Scripts:**
+- `create_draft.py` - Create post drafts
+- `publish.py` - Publish approved posts
+
+**Workflow (Fully Autonomous):**
+1. Qwen monitors business goals and achievements
+2. Creates draft → `Pending_Approval/LINKEDIN_post_*.md`
+3. Human reviews content (HITL)
+4. Move to `Approved/` folder
+5. Run `publish.py` → Posts automatically via Playwright
+6. Moved to `Done/` with timestamp
+
+**Usage:**
+```bash
+# Create a draft
+python3 .qwen/skills/linkedin-poster/scripts/create_draft.py \
+  -t "Excited to announce our new AI automation service!" \
+  -H "AI,Automation,Business" \
+  -v ./AI_Employee_Vault
+
+# Publish approved posts
+python3 .qwen/skills/linkedin-poster/scripts/publish.py \
+  --vault ./AI_Employee_Vault
+```
 
 **Example Post:**
 ```markdown
 ---
 type: linkedin_post
-status: draft
+status: pending_approval
 hashtags: AI, Automation, Business
 ---
 
-🚀 Exciting news! Our new AI Employee service...
+🚀 Exciting news! Our new AI Employee service helps
+businesses automate 80% of routine tasks.
+
+✅ Save 20+ hours/week
+✅ 24/7 autonomous operation
 
 #AI #Automation #Business
 ```
@@ -319,12 +342,14 @@ For each item:
 - [ ] Gmail Watcher monitoring inbox
 - [ ] WhatsApp Watcher monitoring messages
 - [ ] Filesystem Watcher monitoring Inbox folder
-- [ ] LinkedIn Poster skill configured
+- [ ] LinkedIn Poster scripts created (`create_draft.py`, `publish.py`)
+- [ ] Playwright installed (`pip install playwright && playwright install chromium`)
 - [ ] Planner system creating Plan.md files
 - [ ] Approval Workflow folders created
 - [ ] Scheduler configured (cron/Task Scheduler)
 - [ ] Qwen Code processing action files
 - [ ] Human reviewing approvals daily
+- [ ] LinkedIn session authenticated (first-time login)
 
 ---
 
@@ -354,10 +379,18 @@ For each item:
 
 ### Test 4: LinkedIn Post
 
-1. Qwen creates post draft
-2. Review content and timing
-3. Approve by moving to `Approved/`
-4. Orchestrator posts to LinkedIn
+1. Create a draft:
+   ```bash
+   python3 .qwen/skills/linkedin-poster/scripts/create_draft.py \
+     -t "Test post from AI Employee" -H "AI,Testing" -v ./AI_Employee_Vault
+   ```
+2. Review in `Pending_Approval/`
+3. Move to `Approved/`
+4. Publish:
+   ```bash
+   python3 .qwen/skills/linkedin-poster/scripts/publish.py --vault ./AI_Employee_Vault
+   ```
+5. Verify post appears on LinkedIn
 
 ### Test 5: Daily Briefing
 

@@ -41,7 +41,11 @@ except ImportError:
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 # Query for important unread emails
-QUERY_TEMPLATE = 'is:unread is:important'
+# OPTIONS:
+#   'is:unread is:important' - Only important unread emails (default)
+#   'is:unread' - ALL unread emails (use for testing)
+#   'is:unread newer_than:1d' - Unread emails from last 24 hours
+QUERY_TEMPLATE = 'is:unread'
 
 
 class GmailWatcher(BaseWatcher):
@@ -129,24 +133,27 @@ class GmailWatcher(BaseWatcher):
             id=message_id,
             format='full'
         ).execute()
-        
-        # Extract headers
-        headers = {h['name']: h['value'] for h in message['payload']['headers']}
-        
+
+        # Extract headers - handle both full and minimal formats
+        if 'payload' in message and 'headers' in message['payload']:
+            headers = {h['name']: h['value'] for h in message['payload']['headers']}
+        else:
+            headers = {}
+
         # Extract body
         body = ''
-        if 'parts' in message['payload']:
+        if 'parts' in message.get('payload', {}):
             for part in message['payload']['parts']:
-                if part['mimeType'] == 'text/plain' and 'data' in part:
+                if part.get('mimeType') == 'text/plain' and 'data' in part:
                     import base64
                     body = base64.urlsafe_b64decode(part['data']).decode('utf-8')
                     break
-        elif 'body' in message['payload'] and 'data' in message['payload']['body']:
+        elif 'body' in message.get('payload', {}) and 'data' in message['payload']['body']:
             import base64
             body = base64.urlsafe_b64decode(message['payload']['body']['data']).decode('utf-8')
-        
-        # Get labels
-        labels = [label['name'] for label in message.get('labelIds', [])]
+
+        # Get labels - labelIds is a list of strings, not dictionaries
+        labels = message.get('labelIds', [])
         
         return {
             'id': message_id,
@@ -270,11 +277,12 @@ A new email requires your attention.
         self.logger.info(f'Starting {self.__class__.__name__}')
         self.logger.info(f'Vault path: {self.vault_path}')
         self.logger.info(f'Check interval: {self.check_interval}s')
-        
+
         # First, process any existing emails
         self.logger.info('Checking for existing unread emails...')
-        self.run_once()
-        
+        count = self.run_once()
+        self.logger.info(f'Initial check: processed {count} email(s)')
+
         # Then start continuous monitoring
         super().run()
 
