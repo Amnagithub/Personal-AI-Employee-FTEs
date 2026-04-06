@@ -17,6 +17,37 @@ linkedin_session/
 .env.local
 .env.*.local
 venv/
+.venv/
+
+# =============================================================================
+# AI Employee Runtime Data (Auto-generated, don't commit)
+# =============================================================================
+
+# Vault runtime folders (action files, processed items, approvals)
+AI_Employee_Vault/Inbox/*
+AI_Employee_Vault/Needs_Action/*
+AI_Employee_Vault/In_Progress/*
+AI_Employee_Vault/Pending_Approval/*
+AI_Employee_Vault/Approved/*
+AI_Employee_Vault/Rejected/*
+AI_Employee_Vault/Done/*
+!AI_Employee_Vault/Inbox/.gitkeep
+!AI_Employee_Vault/Needs_Action/.gitkeep
+!AI_Employee_Vault/In_Progress/.gitkeep
+!AI_Employee_Vault/Pending_Approval/.gitkeep
+!AI_Employee_Vault/Approved/.gitkeep
+!AI_Employee_Vault/Rejected/.gitkeep
+!AI_Employee_Vault/Done/.gitkeep
+
+# Vault cache and session data
+AI_Employee_Vault/.watcher_cache
+AI_Employee_Vault/.whatsapp_session/
+AI_Employee_Vault/token_send.json
+AI_Employee_Vault/test_whatsapp_login.py
+
+# Obsidian workspace (local preferences)
+.obsidian/
+
 # =============================================================================
 # Python
 # =============================================================================
