@@ -576,9 +576,11 @@ Examples:
 
     elif args.command == "publish":
         # Publish approved posts
-        # Load .env from current working directory (project root)
+        # Load .env from multiple possible locations
+        # Try: current dir, parent dir (project root), script dir
         load_dotenv(Path.cwd() / ".env")
-        # Also try loading from script directory as fallback
+        load_dotenv(Path.cwd().parent / ".env", override=False)
+        load_dotenv(Path(__file__).parent.parent.parent / ".env", override=False)
         load_dotenv(Path(__file__).parent / ".env", override=False)
 
         api = LinkedInAPI(
