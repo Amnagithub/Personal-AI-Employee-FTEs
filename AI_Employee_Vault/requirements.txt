@@ -1,5 +1,5 @@
 # AI Employee Vault - Python Dependencies
-# Silver Tier - Gmail Watcher + LinkedIn Poster
+# Gold Tier - Odoo + Facebook/Instagram + Ralph Wiggum + CEO Briefing + Audit
 # Install with: pip install -r requirements.txt
 # Or with uv: uv pip install -r requirements.txt
 
@@ -9,6 +9,15 @@
 
 # File system watcher (for filesystem_watcher.py)
 watchdog>=4.0.0
+
+# HTTP requests for MCP servers and API calls
+requests>=2.31.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Task scheduling
+schedule>=1.2.0
 
 # =============================================================================
 # GMAIL WATCHER DEPENDENCIES
@@ -32,17 +41,33 @@ playwright>=1.40.0
 # After installing, run: playwright install chromium
 
 # =============================================================================
-# OPTIONAL DEPENDENCIES
+# ODOO MCP DEPENDENCIES (Gold Tier)
 # =============================================================================
 
-# For WhatsApp watcher (future)
-# playwright (already included above)
+# XML-RPC client for Odoo (built-in, but ensuring version)
+# xmlrpc.client is part of Python standard library
 
-# For Odoo integration (Gold tier)
-# requests>=2.31.0
+# =============================================================================
+# FACEBOOK/INSTAGRAM MCP DEPENDENCIES (Gold Tier)
+# =============================================================================
 
-# For scheduling (alternative to cron)
-# schedule>=1.2.0
+# Already covered by requests>=2.31.0 above
 
-# For logging and monitoring
+# =============================================================================
+# WHATSAPP WATCHER DEPENDENCIES
+# =============================================================================
+
+# Browser automation (already included in Playwright above)
+
+# =============================================================================
+# OPTION FOR FUTURE ENHANCEMENTS
+# =============================================================================
+
+# For enhanced logging and monitoring
 # python-json-logger>=2.0.0
+
+# For data validation
+# pydantic>=2.5.0
+
+# For async operations
+# aiohttp>=3.9.0
